@@ -1,0 +1,21 @@
+app = "discord-ticket-bot"
+primary_region = "iad"
+
+[build]
+
+[env]
+  NODE_ENV = "production"
+
+# Keep the bot running (no HTTP service needed for Discord bot)
+[processes]
+  app = "node src/index.js"
+
+# Prevent auto-stop since Discord bot needs to be online 24/7
+[experimental]
+  auto_stop_machines = false
+  auto_start_machines = true
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
